@@ -1,0 +1,59 @@
+package com.SpringMVC.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.SpringMVC.model.convert.commentConvert;
+import com.SpringMVC.model.dto.CommentDTO;
+import com.SpringMVC.model.entity.WorkEntity;
+import com.SpringMVC.model.entity.CommentEntity;
+import com.SpringMVC.repository.CommentRepository;
+import com.SpringMVC.service.IWorkService;
+import com.SpringMVC.service.ICommentService;
+import com.SpringMVC.service.IUserService;
+
+@Service
+public class CommentService implements ICommentService {
+
+	@Autowired
+	private IWorkService workService;
+	@Autowired
+	private IUserService userService;
+	@Autowired
+	private commentConvert commentConverter;
+	@Autowired
+	private CommentRepository commentRepo;
+
+	@Override
+	@Transactional
+	public CommentDTO InsertComment(CommentDTO commentDTO) {
+		CommentEntity commentEntity = new CommentEntity();
+		commentEntity.setContentComment(commentDTO.getCommentContent());
+		commentEntity.setWorkComment(workService.findOneById(commentDTO.getWorkID()));
+		commentEntity.setUserComment(userService.findOne(commentDTO.getUserID()));
+		return commentConverter.toDTO(commentRepo.save(commentEntity));
+	}
+
+	@Override
+	public List<CommentDTO> findAllByWork(WorkEntity work) {
+		List<CommentDTO> result = new ArrayList<CommentDTO>();
+		 for(CommentEntity comment : commentRepo.findByWorkReview(work)) {
+			 CommentDTO commentDTO = commentConverter.toDTO(comment);
+			 commentDTO.setFullName(userService.getNameOfUserById(commentDTO.getUserID()));
+			 result.add(commentDTO); 
+		 }		 
+		return result;
+	}
+
+	@Override
+	@Transactional
+	public void DeleteComment(Long id) {
+		commentRepo.delete(id);
+	}
+
+}

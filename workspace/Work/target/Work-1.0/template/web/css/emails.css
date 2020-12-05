@@ -1,0 +1,45 @@
+@charset "UTF-8";
+.section-email{
+    padding:80px 0px;
+    display: block;
+    background-color: rgb(218,11,78);
+}
+
+.email{
+    margin: 0px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.email .email-title{
+    font-size:30px;
+    font-weight: 600;
+}
+
+.email .subscribe{
+    font-size:16px;
+    font-weight: 500;
+    margin: 7px 0px 15px;
+}
+
+.email .input{
+    display: flex;
+    flex-direction: row;
+}
+
+.input .email-text{
+    padding:22px 22px 18px;
+    border:none;
+    color:rgb(244,248,250);
+    border:0.25px solid #EEE;
+}
+
+.input .submit-email{
+    padding: 14px 25px;
+    border:0.25px solid #EEE;
+    background-color: #EEE;
+    font-weight: 400;
+}

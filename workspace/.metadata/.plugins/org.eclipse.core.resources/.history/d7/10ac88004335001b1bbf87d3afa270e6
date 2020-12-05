@@ -1,0 +1,43 @@
+package com.SpringMVC.model.dto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TeamDTO extends AbstractDTO<TeamDTO> {
+
+	private String teamName;
+	private String teamCode;
+	private List<WorkDTO> works = new ArrayList<WorkDTO>();
+	private List<UserDTO> users = new ArrayList<UserDTO>();
+	public String getTeamName() {
+		return teamName;
+	}
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+	public String getTeamCode() {
+		return teamCode;
+	}
+	public void setTeamCode(String teamCode) {
+		this.teamCode = teamCode;
+	}
+	public List<WorkDTO> getWorks() {
+		return works;
+	}
+	public void setWorks(List<WorkDTO> works) {
+		this.works = works;
+	}
+	public List<UserDTO> getUsers() {
+		return users;
+	}
+	public void setUsers(List<UserDTO> users) {
+		this.users = users;
+	}
+	
+	
+	
+
+	
+	
+	
+}

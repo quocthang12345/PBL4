@@ -1,0 +1,49 @@
+.background-edit{
+    background: rgb(2,2,20);
+    background: linear-gradient(0deg, rgba(2,2,20,1) 0%, rgba(107,138,140,1) 0%, rgba(198,211,212,1) 0%, rgba(202,215,216,1) 0%, rgba(201,214,215,1) 0%, rgba(200,213,214,1) 0%, rgba(201,214,215,1) 0%, rgba(210,220,221,1) 0%, rgba(204,216,217,1) 0%, rgba(204,216,217,1) 0%, rgba(207,218,219,1) 0%, rgba(208,219,220,1) 0%, rgba(201,237,240,1) 0%, rgba(183,244,244,1) 100%, rgba(11,223,236,1) 100%, rgba(185,233,216,1) 100%, rgba(212,222,223,1) 100%, rgba(213,222,223,1) 100%, rgba(219,227,228,1) 100%, rgba(44,205,214,1) 100%, rgba(223,230,231,1) 100%, rgba(236,241,241,1) 100%);
+    padding:75px 0px;
+}
+.box-edit{
+    border-radius:10px;
+    box-shadow: 5px #EEE;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:25%;
+
+}
+.box-wrap .box-form{
+    padding:10px;
+}
+
+.box-form .form-edit{
+    width:100%;
+}
+
+.form-edit .file:focus{
+    border:none;
+    outline: none;
+}
+.position-direct{
+    position: relative;
+}
+
+@media (max-width:500px){
+    .box-edit{
+        position: none;
+        left:0;
+    }
+    .position-direct{
+        position: none;
+    }
+    .background-edit{
+        padding:auto;
+        height: auto;
+    }
+    .box-wrap .box-form{
+        padding: 0;
+    }
+    .box-edit .box-wrap{
+        padding:0px 10px 5px 10px;
+    }
+}

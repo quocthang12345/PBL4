@@ -1,0 +1,328 @@
+@charset "UTF-8";
+.section-content{
+    padding: 80px 0;
+    display: block;
+    background: #f4f8fa!important;
+}
+
+.overview,.box-author,.course-circullum,.info-writer-course,.submit-review,.person-review,.benefit{
+    background:white;
+    display: block;
+    padding:32px;
+    margin: 0 0 30px;
+    font-weight: 400;
+    font-size: 15px;
+    color: #647b9c;
+    border-radius : 0.5rem;
+}
+
+.box-author{
+    padding:0;
+}
+
+.content-overview .title{
+    font-size:18px;
+    font-weight: 600;
+    color:rgb(45,57,84);
+    line-height: 26px;
+}
+
+.content-overview .list-require{
+    margin:0;
+    padding: 0 0 0 20px;
+    line-height: 30px;
+    list-style-image: url(/image/tick.png);
+}
+
+.box-author .author-position{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding : 5px 0px 5px 15px;
+    border-bottom:1px solid #EEE;
+}
+
+.author-position{
+    font-weight: 400;
+    font-size: 15px;
+    color: #647b9c;
+}
+
+.author-position img{
+    width:50px;
+    height:50px;
+    border-radius:5px;
+}
+
+.author-position .content{
+    margin: 7px 0px 0px 7px;
+}
+
+.author-position .name{
+    font-weight: 600;
+    color:rgb(36, 55, 111);
+    margin:0;
+    
+}
+
+.author-position .position{
+    font-size:12px;
+}
+
+.box-author .total-time{
+    display: flex;
+    flex-direction: column;
+    padding:24px 16px 16px;
+}
+
+.total-time > p{
+    margin:0px;
+}
+
+.total-time .time{
+    font-size: 30px;
+    color:rgb(218,11,78);
+    font-weight: 600;
+}
+
+.box-author .benefit-course{
+    padding : 0px 16px 0px;
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    color: #647b9c;
+}
+
+.benefit-course .title{
+    font-size:14px;
+    font-weight: 600;
+    color:rgb(72,80,103);
+}
+
+.benefit-course .list-benefit{
+    list-style-image: url(/image/next.png);
+    padding: 0 0 0 15px;
+}
+
+.course-circullum .title{
+    font-size:18px;
+    color:rgb(45, 57, 84);
+    font-weight: 600;
+    margin-bottom:1rem;
+    line-height: 32px;
+}
+
+.course-circullum .card{
+    background: white;
+    color: rgb(45, 57, 84);
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+    box-shadow:2rem rgba(255,255,255,0.7);
+}
+
+.collapse-lesson .card-header{
+    background: #fff;
+    color: rgb(45, 57, 84);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 6px 10px;
+}
+
+
+.collapse-lesson .btn-link:hover{
+    text-decoration:none;
+}
+
+.collapse-lesson .btn-link:focus{
+    box-shadow:none;
+    text-decoration: none;
+}
+
+.collapse-lesson .card-body{
+    padding: 0 16px 0px;   
+}
+
+.lesson >li{
+    padding :17px 15px;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #e5e8ef;
+}
+
+.collapse-lesson .lesson{
+    color:rgb(100,123,156);
+    padding:0;
+}
+
+.lesson .title{
+    margin:0;
+    font-size:15px;
+    line-height: 30px;
+    text-decoration: none;
+}
+
+.lesson .lecture{
+    margin-right:2rem;
+    font-size:14px;
+    line-height: 30px;
+}
+
+.lesson .none-border{
+    border:none;
+}
+
+
+.info-writer-course .info-writer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+} 
+
+.info-writer img{
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 230px;
+    border-radius:5px;
+    left:10px;
+    top:0;
+}
+
+.info-writer .info{
+    padding-left:10px;
+}
+
+.info-writer .name{
+    margin: 25px 0 0;
+    font-size:20px;
+    font-weight: 600;
+    color: rgb(74,86,130);
+    line-height: 24px;
+}
+
+.info-writer .name:hover{
+    color:#da0b4e;
+}
+
+.info .list-info,.list-contact{
+    list-style: none;
+    margin:0; 
+    padding:5px 0 15px;
+}
+
+.info .list-contact{
+    margin-top: 10px;
+}
+
+.list-contact li a{
+    width: 36px;
+    height: 36px;
+    display: flex;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dbe2ef;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #4a5682;
+    text-decoration: none;
+}
+
+.list-contact li a:hover{
+    color:#da0b4e;
+}
+
+.submit-review .title{
+    font-size:17px;
+    font-weight: 600;
+    color:rgb(45, 57, 84);
+    margin-bottom: 20px;
+    line-height: 32px;
+}
+
+.submit-review .submit-name,.submit-email,.submit-content-review{
+    width: 100%;
+    border: 0.5px solid #DDD;
+    border-radius:5px
+}
+
+.submit-review input:focus,textarea:focus{
+    outline: none;
+}
+
+.other-review .image-other-review{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+}
+
+.other-review .title-review{
+    padding:0;
+    list-style: none;
+    margin: 0 0 4px;
+}
+
+.title-review .name-submit-review{
+    font-size: 18px;
+    color:rgb(45, 57, 84);
+    font-weight: 600;
+    line-height: 32px;
+}
+
+.star .checked{
+    color: orange;
+}
+
+.submit-review{
+    border:none;
+}
+
+.other-review .card{
+    border:none;
+}
+
+.other-review{
+    border-bottom:1px solid #DDD;
+}
+
+.none-border{
+    border:none;
+}
+
+.benefit .title{
+    font-size:18px;
+    color:rgb(45, 57, 84);
+    font-weight: 600;
+    margin-bottom:1rem;
+}
+
+.benefit .convenient{
+    list-style: none;
+    margin:20px 0 0 ;
+    padding:0;
+    font-size: 14px;
+}
+
+.convenient li{
+    margin-bottom: 15px;
+}
+
+.convenient li strong{
+    float:right;
+}
+
+.convenient li i{
+    margin-right:5px;
+}
+
+
+
+
+
+

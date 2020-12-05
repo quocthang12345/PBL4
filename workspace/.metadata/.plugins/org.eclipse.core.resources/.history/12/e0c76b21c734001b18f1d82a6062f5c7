@@ -1,0 +1,40 @@
+package com.SpringMVC.api.admin;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.SpringMVC.model.dto.WorkDTO;
+import com.SpringMVC.service.IWorkService;
+
+@RestController(value = "CourseApiOfAdmin")
+public class WorkAPI {
+	@Autowired
+	private IWorkService courseService;
+	
+	@GetMapping(value = "/api/course")
+	public WorkDTO ReadCourse(){
+		return null;
+		
+	}
+	
+	@PostMapping(value = "/api/course")
+	public WorkDTO InsertCourse(@RequestBody WorkDTO courseDto){
+		return courseService.Update(courseDto);
+	}
+	
+	@PutMapping(value = "/api/course")
+	public WorkDTO UpdateCourse(@RequestBody WorkDTO courseDto){
+		return courseService.Update(courseDto);	
+	}
+	
+	
+	@DeleteMapping(value = "/api/course")
+	public void DeleteCourse(@RequestBody Long[] ids){
+		courseService.Delete(ids);
+	}
+}

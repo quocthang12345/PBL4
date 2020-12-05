@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+    
+    <!-- apply Sitemesh default template -->
+    <decorator name="admin-home" page="admin.jsp">
+        <pattern>/admin-home*</pattern>
+    </decorator>
+    <decorator name="edit-work" page="edit-work.jsp">
+        <pattern>/admin-home/edit-work*</pattern>
+    </decorator>
+    <decorator name="edit-assignment" page="edit-assignment.jsp">
+        <pattern>/admin-home/edit-assignment*</pattern>
+    </decorator>
+    <decorator name="add-assignment" page="add-assignment.jsp">
+        <pattern>/admin-home/add-assignment*</pattern>
+    </decorator>
+    
+    <decorator name="trang-chu" page="web.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+    <decorator name="list-work" page="list-work.jsp">
+        <pattern>/list-work*</pattern>
+    </decorator>
+    <decorator name="mon-hoc" page="lesson.jsp">
+        <pattern>/mon-hoc*</pattern>
+    </decorator>
+    <decorator name="video-mon-hoc" page="video-lesson.jsp">
+        <pattern>/video-mon-hoc*</pattern>
+    </decorator>
+    <decorator name="dang-nhap" page="login.jsp">
+        <pattern>/dang-nhap*</pattern>
+    </decorator>
+    <decorator name="dang-ky" page="register.jsp">
+        <pattern>/dang-ky*</pattern>
+    </decorator>
+    
+     <decorator name="thong-tin" page="profile.jsp">
+        <pattern>/profile*</pattern>
+    </decorator>
+  
+       
+</decorators>

@@ -1,0 +1,67 @@
+@charset "UTF-8";
+.edit-lesson{
+    background:#f6f9fa;
+    display:block;
+    padding: 80px 0px;
+}
+.edit-lesson .badge-lesson,.title{
+    font-size:11px;
+    color:#7b7d82;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06rem;
+
+}
+.edit-lesson .title{
+    border:none;
+    background:white;
+}
+.list-lesson{
+    font-size:14px;
+    color:#7b7d82;
+    font-weight: 500;
+    line-height: 20px;
+    width:100%;
+    height: auto;
+}
+
+.img-lesson img{
+    width:250px;
+    height: 220px;
+    border-radius:10px;
+    margin-left:10px;
+}
+.badge-lesson li a{
+    text-decoration: none;
+}
+
+.list-lesson .other-lesson{
+    list-style: none;
+    padding:0;
+}
+.other-lesson li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    margin:10px;
+}
+
+.other-lesson p{
+    margin:0;
+}
+.other-lesson h5{
+    margin:0;
+}
+
+@media screen and (max-width: 800pxs) and (min-width: 700px){
+    .description-lesson{
+        margin-left:10px;
+    }
+
+    .list-lesson .spacing{
+        padding-bottom:15rem !important;
+    }
+}

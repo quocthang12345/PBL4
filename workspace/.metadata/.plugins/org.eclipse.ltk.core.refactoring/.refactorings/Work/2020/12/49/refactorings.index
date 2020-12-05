@@ -1,0 +1,8 @@
+1606931416611	Rename type 'CourseAPI'
+1606931449461	Rename type 'LessonAPI'
+1606931460203	Rename type 'ReviewAPI'
+1606962007338	Delete element
+1606963630326	Delete element
+1606984756508	Encapsulate field 'workTeam'
+1606986688423	Encapsulate field 'workID'
+1607016797992	Encapsulate field 'teamName'

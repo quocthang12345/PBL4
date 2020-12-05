@@ -1,0 +1,42 @@
+.lesson-wrapper{
+    padding:80px 0px 200px;
+    font-size:14px; 
+    color: rgb(100,123,156);
+    font-weight: 400;
+    line-height: 30px;
+    font-family: 'Muli',sans-serif;
+    background-color: rgb(244,248,250);
+}
+
+.lesson-wrapper .content-lesson{
+    height: auto;
+    padding-bottom:40px;
+}
+.content-lesson .description-lesson{
+    height: auto;
+    margin:0;
+    padding:0;
+}
+
+.description-lesson .title-lesson{
+    color:  rgb(52, 75, 107);
+}
+
+.description-lesson .short-lesson{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.content-lesson .video-lesson{
+    width: 100%;
+    height: 420px !important;
+    border: 1px solid #FFF;
+    display: inline-block;
+}
+.video-lesson iframe{
+    width: 100% !important;
+    height: 420px !important;
+}
+.lesson-wrapper .btn-next{
+    width:100%
+}

@@ -1,0 +1,132 @@
+@charset "UTF-8";
+.section-info{
+    display: block;
+    width: 100%;
+    height: auto;
+    padding:80px 0px;
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center; 
+    margin-left: 10%;
+    width: 100%;
+    height: auto;
+}
+
+.info .info-left{
+    width:45%;
+    height: auto;
+    margin:0 15% 0;
+}
+
+.info-left .btn-pink{
+    height: auto;
+    color:#da0b4e;
+    background-color:rgba(218, 11, 78, 0.1);
+    padding: 15px 5px 15px 30px;
+    text-decoration:none;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+.btn-pink .arrow{
+    color:white;
+    padding:10px 15px 8px 15px;
+    box-sizing: border-box;
+    border-radius:5px;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: middle;
+    background-size: cover;
+    background-position: center;
+    background-color:#da0b4e;
+    margin-left:20px;
+    transition: all 0.5s;
+}
+
+.btn-pink:hover{
+    color:white;
+    background-color:#da0b4e;
+}
+.btn-pink:hover .arrow{
+    background-color:white;
+    color:#da0b4e;
+}
+
+.info-item .info-title{
+    font-size:30px;
+    line-height: 36px;
+    color: #2D3954;
+    box-sizing: inherit;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.info-item .block-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width:100%;
+    height: auto;
+    margin: 0 0 24px;
+}
+
+.block-item .img-info-1,.img-info-2,.img-info-3{
+    width:45px;
+    height:45px;
+    border-radius:10%;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: middle;
+    background-size: cover;
+    background-position: center;
+    background-color:rgba(241,7,80,0.25);
+    margin-right:15px;
+    padding:1%;
+    box-shadow:rgba(0, 22, 84, 0.1) 0px 7px 15px 0px;
+}
+
+.block-item img{
+    margin-bottom:15px;
+}
+
+.info-content > h4{
+    outline-color:rgb(45, 57, 84);
+    color:rgb(45, 57, 84);
+    box-sizing:border-box;
+    line-height:26px;
+    font-size: 14px;
+    font-weight: 600;
+    margin:5px 0 0;
+}
+
+.info-content > p{
+    font-size: 14px;
+    color:#647b9c;
+    font-weight: 400;
+    box-sizing: inherit;
+    line-height: 1.8;
+    margin:0;
+}
+
+.info .info-right{
+    width:60%;
+    height: auto;
+    margin:0 2.5% 0;
+}
+
+.info-img img{
+    background-size: cover;
+    background-position: center;
+    outline: none;
+    border:none;
+    width:100%;
+    height: 350px;
+
+}
+

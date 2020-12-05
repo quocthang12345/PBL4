@@ -1,0 +1,103 @@
+@charset "UTF-8";
+body{
+    margin: 0;
+    padding:0;
+}
+
+.container-fluid{
+    padding:0 !important;
+}
+
+.img-banner{
+    width:100%;
+    height: auto;
+    background-image: url(/image/education.jpg) ;
+    background-size: cover;
+    background-position: center;
+    display: block;
+    padding: 200px 50px 200px 100px;
+}
+
+.img-banner .content-banner{
+    width:100%;
+    height:auto;
+    background-color: white;
+    border-radius: 2%;
+    display: flex; 
+    color:rgb(36,47,101);
+    font-weight: 600;
+    border: 0.25px solid #EEE;
+}
+
+.content-banner .text-description{
+    font-size: 16px;
+    color:rgb(100,123,156);
+    font-weight: 200;
+}
+
+
+.content-banner .input-search{
+    width:90%;
+    height:50px;
+    border: 0.5px solid #DDD;
+    padding-left: 10px;
+}
+
+.content-course{
+    width:100%;
+    height:auto;
+    background-color: rgb(218,11,78);
+}
+
+.content-course .description{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin:5% 0% 5% 20%;
+    border-right: 1px solid #EEE;
+}
+
+
+.content-left,.content-center,.content-right .icon-course{
+    font-size:21px;
+    color:rgb(255,255,255);
+    outline-color: rgb(255,255,255) ;
+}
+
+.icon-course .icon-cmr{
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: middle;
+    padding: 0px;
+    background-color: rgba(255,255,255,0.1);
+    margin:25px 0px 25px 20px;
+}
+.content-left,.content-center,.content-right .short-description{
+    font-size: 18px;
+    font-weight: 600px;
+    color: white;
+}
+
+.short-description > p{
+    margin: 10px 0px 10px;
+}
+
+.short-description .title-course{
+    font-size: 20px;
+    font-weight:600;
+}
+
+.content-right .description{
+    margin:5% 30% 5% 0%;
+    border: none;
+}
+
+
+.content-center .description{
+    margin:5% 5% 5% 5%;
+}
+

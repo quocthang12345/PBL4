@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="UTF-8"%>
+ <%@include file="/common/taglib.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title><dec:title default="leader" /></title>
+<link href="<c:url value='/template/leader/css/css.css'/>" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+</body>
+</html>

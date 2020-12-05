@@ -1,0 +1,87 @@
+package com.SpringMVC.controller.admin;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.SpringMVC.model.dto.WorkDTO;
+import com.SpringMVC.model.dto.AssignmentDTO;
+import com.SpringMVC.model.dto.UserDTO;
+import com.SpringMVC.service.IWorkService;
+import com.SpringMVC.service.IAssignmentService;
+import com.SpringMVC.service.ITeamService;
+import com.SpringMVC.service.IUserService;
+import com.SpringMVC.util.MessageUtils;
+import com.SpringMVC.util.SecurityUtils;
+
+@Controller(value = "ControllerOfAdmin")
+public class HomeController {
+
+	@Autowired
+	private IWorkService workService;
+	@Autowired
+	private IAssignmentService assignmentService;
+	@Autowired
+	private IUserService userService;
+	@Autowired
+	private ITeamService teamService;
+	
+	@RequestMapping(value = "/admin-home" , method = RequestMethod.GET)
+	public ModelAndView homePage(@Param("key") String key) {
+		ModelAndView mav = new ModelAndView("admin/home");
+		UserDTO user = userService.findByUsername(SecurityUtils.getPrincipal().getUsername());
+		mav.addObject("user",user);
+		mav.addObject("listwork", workService.findList(key));
+		mav.addObject("key", key);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin-home/edit-work" , method = RequestMethod.GET)
+	public ModelAndView editWorkPage(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("admin/edit/edit-work");
+		WorkDTO work = new WorkDTO();
+		if(id != null) {
+			work = workService.findOne(id);
+		}
+		MessageUtils.ShowMessage(request);
+		mav.addObject("team",teamService.findAll());
+		mav.addObject("work", work);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin-home/edit-assignment" , method = RequestMethod.GET)
+	public ModelAndView editAssignmentPage(@RequestParam(value = "id" ,required = false) Long id, HttpServletRequest request,@RequestParam(value = "workid" ,required = false) Long workID ) {
+		ModelAndView mav = new ModelAndView("admin/edit-assignment/edit-assignment");
+		AssignmentDTO assignment = new AssignmentDTO();
+		if(id != null) {
+			assignment = assignmentService.findOne(id);
+		}
+		assignment.setWorkId(workID);
+		MessageUtils.ShowMessage(request);
+		mav.addObject("assignment",assignment);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin-home/add-assignment" , method = RequestMethod.GET)
+	public ModelAndView addAssignmentPage(@RequestParam(value = "id",required = false) Long id,
+			@Param("keyword") String keyword,@Param("Id") Long Id) {
+		ModelAndView mav = new ModelAndView("admin/edit-assignment/add-assignment");
+		WorkDTO work = new WorkDTO();
+		if(Id != null) {
+			work = workService.findOne(Id);
+			mav.addObject("listAssignment", assignmentService.findByWorkID(Id,keyword));
+		}else {
+			work = workService.findOne(id);
+			mav.addObject("listAssignment", assignmentService.findByWorkID(id,keyword));
+		}
+		mav.addObject("keyword",keyword);
+		mav.addObject("work", work);
+		return mav;
+	}
+}

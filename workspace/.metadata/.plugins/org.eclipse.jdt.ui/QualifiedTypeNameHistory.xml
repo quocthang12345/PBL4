@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.SpringMVC.service.IWorkService"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.SpringMVC.model.dto.WorkDTO"/>
+<fullyQualifiedTypeName name="com.SpringMVC.model.entity.WorkEntity"/>
+<fullyQualifiedTypeName name="com.SpringMVC.model.dto.TeamDTO"/>
+</qualifiedTypeNameHistroy>
