@@ -1,0 +1,8 @@
+package com.SpringMVC.model.convert;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class activityConvert {
+
+}

@@ -1,0 +1,60 @@
+package com.SpringMVC.interceptor;
+
+import java.util.StringTokenizer;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.SpringMVC.model.entity.ActivityEntity;
+import com.SpringMVC.model.entity.UserEntity;
+import com.SpringMVC.service.IActivityService;
+
+@Component
+public class ActivityInterceptor extends HandlerInterceptorAdapter {
+
+    @Autowired
+    private IActivityService activityService;
+
+
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        String userAgent = request.getHeader("User-Agent");
+        if (userAgent == null) userAgent = request.getHeader("user-agent");
+        String expires = response.getHeader("Expires");
+        ActivityEntity activity = new ActivityEntity();
+        activity.setIp(this.getClientIpAddress(request));
+        activity.setExpires(expires);
+        activity.setRequestMethod(request.getMethod());
+        activity.setUrl(request.getRequestURI());
+
+
+        if (SecurityContextHolder.getContext().getAuthentication() != null &&
+                SecurityContextHolder.getContext().getAuthentication().isAuthenticated() &&
+                !(SecurityContextHolder.getContext().getAuthentication()
+                        instanceof AnonymousAuthenticationToken)) {
+            UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            activity.setUser(user);
+            activityService.save(activity);
+            
+            return super.preHandle(request, response, handler);
+        } 
+        return super.preHandle(request, response, handler);
+    }
+
+    private String getClientIpAddress(HttpServletRequest request) {
+        String xForwardedForHeader = request.getHeader("X-Forwarded-For");
+        if (xForwardedForHeader == null) {
+            return request.getRemoteAddr();
+        } else {
+            return new StringTokenizer(xForwardedForHeader, ",").nextToken().trim();
+        }
+    }
+
+}

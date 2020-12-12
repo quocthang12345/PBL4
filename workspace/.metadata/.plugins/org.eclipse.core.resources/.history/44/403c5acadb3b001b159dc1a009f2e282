@@ -1,0 +1,40 @@
+package com.SpringMVC.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.SpringMVC.model.convert.activityConvert;
+import com.SpringMVC.model.dto.ActivityDTO;
+import com.SpringMVC.model.entity.ActivityEntity;
+import com.SpringMVC.repository.ActivityRepository;
+import com.SpringMVC.service.IActivityService;
+
+@Service
+public class ActivityService implements IActivityService {
+
+	@Autowired
+	private ActivityRepository activityRepo;
+	@Autowired
+	private activityConvert activityConverter;
+	
+	
+	@Override
+	public List<ActivityDTO> findAll() {
+		List<ActivityEntity> result = activityRepo.findAll();
+		List<ActivityDTO> rs = new ArrayList<ActivityDTO>();
+		for(ActivityEntity i : result) {
+			rs.add(activityConverter.toDTO(i));
+		}
+		return rs;
+	}
+
+	@Override
+	public void save(ActivityEntity activity) {
+		activityRepo.save(activity);
+		
+	}
+
+}

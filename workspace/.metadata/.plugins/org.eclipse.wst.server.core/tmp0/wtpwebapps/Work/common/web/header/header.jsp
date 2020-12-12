@@ -72,7 +72,7 @@
 	                                          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=SecurityUtils.getPrincipal().getFullName()%></span>
 								                <c:if test="${user.userAvatar != null}">
-								                	<img class="img-profile rounded-circle" src="<c:url value='${user.userAvatar }' />" style="width:30px; height:30px;" />
+								                	<img class="img-profile rounded-circle" src="<c:url value='https://via.placeholder.com/30'/>" style="width:30px; height:30px;" />
 								                </c:if>
 								                <c:if test="${user.userAvatar == null}">
 								                	<img class="img-profile rounded-circle" src="https://via.placeholder.com/30" style="width:30px; height:30px;" />

@@ -1,0 +1,177 @@
+package com.SpringMVC.model.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "user")
+public class UserEntity extends BaseEntity {
+	@Column(name = "username")
+	private String userName;
+	
+	@Column(name = "avatar")
+	private String Avatar;
+	
+	@Column(name = "password")
+	private String passWord;
+	
+	@Column(name = "fullname")
+	private String fullName;
+	
+	@Column(name = "status")
+	private int status;
+	
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_roles", 
+        joinColumns = { @JoinColumn(name = "user_id")}, 
+        inverseJoinColumns = { @JoinColumn(name = "role_id")})
+    private List<RoleEntity> roles = new ArrayList<>();
+    
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userComment")
+    private List<CommentEntity> comments;
+    
+    
+    
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_team", 
+        joinColumns = { @JoinColumn(name = "user_id")}, 
+        inverseJoinColumns = { @JoinColumn(name = "team_id")})
+    private List<TeamEntity> teams = new ArrayList<>();
+    
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_assignment", 
+        joinColumns = { @JoinColumn(name = "user_id")}, 
+        inverseJoinColumns = { @JoinColumn(name = "assignment_id")})
+    private List<AssignmentEntity> assignments = new ArrayList<>();
+    
+    
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private ActivityEntity activity;
+    
+    
+    
+    
+    
+    
+
+	public ActivityEntity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(ActivityEntity activity) {
+		this.activity = activity;
+	}
+
+	public List<AssignmentEntity> getAssignments() {
+		return assignments;
+	}
+
+	public void setAssignments(List<AssignmentEntity> assignments) {
+		this.assignments = assignments;
+	}
+
+	public List<TeamEntity> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(List<TeamEntity> teams) {
+		this.teams = teams;
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	
+
+	public String getAvatar() {
+		return Avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.Avatar = avatar;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+	public String getPassword() {
+		return passWord;
+	}
+
+	public void setPassword(String password) {
+		this.passWord = password;
+	}
+
+	public String getFullname() {
+		return fullName;
+	}
+
+	public void setFullname(String fullname) {
+		this.fullName = fullname;
+	}
+
+
+	public List<RoleEntity> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<RoleEntity> roles) {
+		this.roles = roles;
+	}
+
+
+	public List<CommentEntity> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<CommentEntity> comments) {
+		this.comments = comments;
+	}
+
+	
+    
+    
+	
+}

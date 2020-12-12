@@ -1,0 +1,7 @@
+package com.SpringMVC.service.impl;
+
+import com.SpringMVC.service.IActivityService;
+
+public class ActivityService implements IActivityService {
+
+}

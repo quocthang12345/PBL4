@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="img"/>
+		<item key="selection" value="assignmentDescription"/>
 		<list key="findhistory">
+			<item value="assignmentDescription"/>
 			<item value="img"/>
 			<item value="src"/>
 			<item value="courseName"/>

@@ -19,7 +19,7 @@ public class AssignmentEntity extends BaseEntity {
 	@Column(name = "name")
 	private String assignmentName;
 	
-	@Column(name = "decription")
+	@Column(name = "description")
 	private String descriptionAssignment;
 	
 	

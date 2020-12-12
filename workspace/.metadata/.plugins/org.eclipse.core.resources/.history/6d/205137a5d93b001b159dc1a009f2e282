@@ -1,0 +1,5 @@
+package com.SpringMVC.service;
+
+public interface IActivityService {
+
+}

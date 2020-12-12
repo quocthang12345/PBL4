@@ -15,6 +15,7 @@ import com.SpringMVC.model.dto.AssignmentDTO;
 import com.SpringMVC.model.dto.TeamDTO;
 import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.service.IWorkService;
+import com.SpringMVC.service.IActivityService;
 import com.SpringMVC.service.IAssignmentService;
 import com.SpringMVC.service.ITeamService;
 import com.SpringMVC.service.IUserService;
@@ -32,15 +33,34 @@ public class HomeController {
 	private IUserService userService;
 	@Autowired
 	private ITeamService teamService;
+	@Autowired
+	private IActivityService activityService;
 	
 	@RequestMapping(value = "/admin-home" , method = RequestMethod.GET)
 	public ModelAndView homePage(@Param("key") String key,@Param("code") String code) {
 		ModelAndView mav = new ModelAndView("admin/home");
 		UserDTO user = userService.findByUsername(SecurityUtils.getPrincipal().getUsername());
 		mav.addObject("user",user);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin-home/list" , method = RequestMethod.GET)
+	public ModelAndView listPage(@Param("key") String key,@Param("code") String code) {
+		ModelAndView mav = new ModelAndView("admin/list/list");
+		UserDTO user = userService.findByUsername(SecurityUtils.getPrincipal().getUsername());
+		mav.addObject("user",user);
 		mav.addObject("teams",teamService.findList());
 		mav.addObject("listwork", workService.findList(key,code));
 		mav.addObject("key", key);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin-home/monitor-user" , method = RequestMethod.GET)
+	public ModelAndView monitorPage() {
+		ModelAndView mav = new ModelAndView("admin/monitor/monitor");
+		UserDTO user = userService.findByUsername(SecurityUtils.getPrincipal().getUsername());
+		mav.addObject("user",user);
+		mav.addObject("activities", activityService.findLast());
 		return mav;
 	}
 	

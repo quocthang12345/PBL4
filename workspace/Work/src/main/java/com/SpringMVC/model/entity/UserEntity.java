@@ -59,9 +59,23 @@ public class UserEntity extends BaseEntity {
     private List<AssignmentEntity> assignments = new ArrayList<>();
     
     
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userActivity")
+    private List<ActivityEntity> activities;
     
     
     
+    
+    
+    
+
+
+	public List<ActivityEntity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<ActivityEntity> activities) {
+		this.activities = activities;
+	}
 
 	public List<AssignmentEntity> getAssignments() {
 		return assignments;

@@ -1,20 +1,29 @@
 package com.SpringMVC.api.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.SpringMVC.model.dto.AssignmentDTO;
 import com.SpringMVC.model.dto.WorkDTO;
+import com.SpringMVC.service.IAssignmentService;
 import com.SpringMVC.service.IWorkService;
 
 @RestController(value = "WorkApiOfAdmin")
 public class WorkAPI {
 	@Autowired
 	private IWorkService workService;
+	@Autowired
+	private IAssignmentService assignmentService;
 	
 	@GetMapping(value = "/api/work")
 	public WorkDTO ReadWork(){
@@ -36,5 +45,11 @@ public class WorkAPI {
 	@DeleteMapping(value = "/api/work")
 	public void DeleteWork(@RequestBody Long[] ids){
 		workService.Delete(ids);
+	}
+	
+	@PostMapping("/api/work/{id}")
+	public AssignmentDTO showModel(@PathVariable("id") Long assignmentID) {
+		  return assignmentService.findOne(assignmentID);
+		  
 	}
 }

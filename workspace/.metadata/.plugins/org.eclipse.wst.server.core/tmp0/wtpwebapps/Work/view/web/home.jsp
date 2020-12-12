@@ -92,14 +92,14 @@
 		                            <ul>
 		                                <li class="img-item item-img-1"><img src="<c:url value='/template/web/icon/marketing.png'/>" /></li>
 		                                <li class="content">
-		                                    <p class="header-title title-item-1"><a href="<c:url value='/list-work?keyword=Java Programming' />" style="text-decoration:none;">Marketing</a></p>
+		                                    <p class="header-title title-item-1"><a href="<c:url value='/list-work?keyword=Marketing' />" style="text-decoration:none;">Marketing</a></p>
 		                            </ul>
 	                        </div>
                         <div class="item i-2 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
                                 <li class="img-item item-img-2"><img src="<c:url value='/template/web/icon/it.png'/>" /></li>
                                 <li class="content">
-                                    <p class="header-title title-item-2"><a href="<c:url value='/list-work?keyword=C/' />" style="text-decoration:none;">Kĩ thuật</a></p>
+                                    <p class="header-title title-item-2"><a href="<c:url value='/list-work?keyword=IT/' />" style="text-decoration:none;">Kĩ thuật</a></p>
                                 </li>
                             </ul>
                         </div>
@@ -107,7 +107,7 @@
                             <ul>
                                 <li class="img-item item-img-3"><img src="<c:url value='/template/web/icon/care.png'/>" /></li>
                                 <li class="content">
-                                    <p class="header-title title-item-3"><a href="<c:url value='/list-work?keyword=Javascript' />" style="text-decoration:none;">Chăm sóc khách hàng</a></p>
+                                    <p class="header-title title-item-3"><a href="<c:url value='/list-work?keyword=GUEST-SERVICE' />" style="text-decoration:none;">Chăm sóc khách hàng</a></p>
                                 </li>
                             </ul>
                         </div>
@@ -115,7 +115,7 @@
                             <ul>
                                 <li class="img-item item-img-4"><img src="<c:url value='/template/web/icon/security.png'/>" /></li>
                                 <li class="content">
-                                    <p class="header-title title-item-4"><a href="<c:url value='/list-work?keyword=Ruby' />" style="text-decoration:none;">An ninh</a></p>
+                                    <p class="header-title title-item-4"><a href="<c:url value='/list-work?keyword=security' />" style="text-decoration:none;">An ninh</a></p>
                                 </li>
                             </ul>
                         </div>

@@ -54,7 +54,7 @@
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-3 mb-4">
                                                 <div class="img-profile">
-                                                    <img src="<c:url value='${profile.userAvatar }'/>" style="width:150px; height:150px;" alt="img-user" />
+                                                    <img src="<c:url value='https://via.placeholder.com/50'/>" style="width:150px; height:150px;" alt="img-user" />
                                                     <input type="file" id="fileUpload" class="col-8 col-sm-8 col-md-8 form-control ml-4" style="border:none;color: transparent;" value="Choose Avatar" />
                                                 </div>
                                             </div>

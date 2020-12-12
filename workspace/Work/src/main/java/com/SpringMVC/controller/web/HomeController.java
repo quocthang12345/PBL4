@@ -1,7 +1,5 @@
 package com.SpringMVC.controller.web;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.SpringMVC.model.dto.CommentDTO;
-import com.SpringMVC.model.dto.TeamDTO;
 import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.model.dto.WorkDTO;
 import com.SpringMVC.service.IAssignmentService;
@@ -84,16 +81,16 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/work-detail" , method = RequestMethod.GET)
-	public ModelAndView workDetailPage(@RequestParam(value="id",required = false) Long id) {
+	public ModelAndView workDetailPage(@RequestParam(value="id",required = false) Long id,HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("web/work-detail/work-detail");
 		mav.addObject("listComment",commentService.findAllByWork(workService.findOneById(id)));
 		mav.addObject("work",workService.findOne(id));
+		mav.addObject("listAssignment",assignmentService.findListByWorkID(id));		
 		Authentication isAuthen = SecurityContextHolder.getContext().getAuthentication();
 		if(!isAuthen.getPrincipal().toString().equals("anonymousUser")) {
 			UserDTO user = userService.findByUsername((SecurityUtils.getPrincipal().getUsername()));
 			mav.addObject("user",user);
 		}
-		mav.addObject("listAssignment",assignmentService.findListByWorkID(id));		
 		mav.addObject("comment",new CommentDTO());
 		return mav;
 	}
@@ -137,6 +134,9 @@ public class HomeController {
 		mav.addObject("profile", user);
 		return mav;
 	}
+	
+	
+	
 	
 	
 	

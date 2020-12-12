@@ -3,8 +3,10 @@ package com.SpringMVC.config;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -33,7 +35,7 @@ public class JPAConfig {
 	}
 	
 	@Bean
-	JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+	JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory,HttpServletRequest request) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(entityManagerFactory);
 		return transactionManager;
@@ -46,20 +48,26 @@ public class JPAConfig {
 	
 	@Bean
 	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost:101/work");
 		dataSource.setUsername("root");
 		dataSource.setPassword("quocthang123");
+		dataSource.setInitialSize(20);
+		dataSource.setMaxActive(30);
+		dataSource.setMaxIdle(20);
+		dataSource.setMinIdle(5);
 		return dataSource;
 	}
 	
 	Properties additionalProperties() {
 		Properties properties = new Properties();
-//		properties.setProperty("hibernate.hbm2ddl.auto", "update");
+		/* properties.setProperty("hibernate.hbm2ddl.auto", "update"); */
 		/* properties.setProperty("hibernate.hbm2ddl.auto", "create"); */
-    	properties.setProperty("hibernate.hbm2ddl.auto", "none");
+		properties.setProperty("hibernate.hbm2ddl.auto", "none"); 
 		properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
 		return properties;
 	}
+	
+	
 }

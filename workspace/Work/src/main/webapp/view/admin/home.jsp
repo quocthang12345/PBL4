@@ -23,15 +23,20 @@
         <div class="sidebar-brand-text mx-3">Trang Quản Trị </div>
       </a>
 
-      <!-- Divider -->
+      <!-- Divider -->s
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href='<c:url value='/admin-home' />'>
+        <a class="nav-link" href='<c:url value='/admin-home/list' />'>
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Danh sách bộ phận</span></a>
       </li>
+      <li class="nav-item active">
+	      <a class="nav-link" href='<c:url value='/admin-home/monitor-user' />'>
+	        <i class="fas fa-fw fa-tachometer-alt"></i>
+	      <span>Giám sát hoạt động</span></a>
+	  </li>
 
 
       <!-- Divider -->
@@ -110,7 +115,7 @@
 	            	<li class="form-group nav-item dropdown no-arrow mx-1 pt-3">
 	                      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=SecurityUtils.getPrincipal().getFullName()%></span>
-			                <img class="img-profile rounded-circle" src="<c:url value='${user.userAvatar }' />" style="width:40px; height:40px;"/>
+			                <img class="img-profile rounded-circle" src="<c:url value='https://via.placeholder.com/30' />" style="width:40px; height:40px;"/>
 			              </a>
 		              <!--User Information -->
 		              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -135,89 +140,7 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Danh sách khóa học </h6>
-            </div>
-            <div class="card-body">
-              	<div class="row mb-2">
-               		<div class="col-4">
-	               		<form action="<c:url value='/admin-home'/>">
-		                	<input id="key" name="key" type="search" value="${key}" class="form-control col-8" onchange="this.form.submit()" onsearch="this.form.submit()" style="margin:0 10px 0;" placeholder="Find Work">
-		                </form>
-               		</div>
-               		<div class="col-8">
-               			<div class="btn-group float-right">
-							<a class="btn btn-primary " data-toggle="tooltip" title='Thêm Assignment' href="<c:url value='/admin-home/edit-work' />">
-								<span>	<i class="fa fa-plus-circle "></i> </span>
-							</a>
-							<a id="btnDelete" type="button" class="btn btn-warning" data-toggle="tooltip" title='Xóa Assignment'>
-								<span> <i class="fas fa-trash-alt"></i> </span>
-							</a>
-						</div>
-					</div>
-					<div class="col-4" style="margin:5px 0px 5px 10px">
-	               		<form action="<c:url value='/admin-home'/>">
-		                	  <select class="form-control" style="width:45%" id="code" name="code" onchange="this.form.submit()">
-									<option value="" label="-- Choose Team --" />
-									<c:forEach var="i" items="${teams}">
-								  		<option value="${i.teamCode}" label="${i.teamName}" />
-								  	</c:forEach>
-							  </select>
-		                </form>
-               		</div>
-               	</div>
-	                	
-	              <div class="row">
-	              	<div class="col-sm-12">
-	              	<c:if test="${not empty listwork}"  >
-	              		<h3>${listwork.get(0).teamName}</h3>
-	              	</c:if>
-	              	</div>
-	                <div class="col-sm-12">
-	                	  <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-			                  <thead>
-			                    <tr role="row">
-			                      <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" style="width: 98px;"><input type="checkbox" id="checkAll"/></th>
-				                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" style="width: 98px;">WorkName</th>
-				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 153px;">Thumbnail</th>
-				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 69px;">ShortDecription</th>
-				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 31px;">Content</th>
-				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 69px;"></th>
-				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 69px;"></th>
-				                </tr>
-			                  </thead>
-	       
-			                   <tbody>
-			                   <c:forEach var="i" items="${listwork}">
-				                  <tr role="row" class="odd">
-				                  <td><input type="checkbox" value="${i.id}"/></td>
-				                      <td class="sorting_1">${i.workName}</td>
-				                      <td>${i.thumbnail}</td>
-				                      <td>${i.workDescription}</td>
-				                      <td>${i.workContent}</td>
-				                      <td>
-								      	<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip" title="Update Work" 
-								      	href='<c:url value='/admin-home/edit-work?id=${i.id}' />'>
-								      		<i class="fas fa-edit" aria-hidden="true"></i></a>
-							      	</td>
-							      	<td>
-								      	<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip" title="Add Assignment" 
-								      	href='<c:url value='/admin-home/add-assignment?id=${i.id}' />'>
-								      		<i class="fas fa-folder-plus"></i></a>
-							      	</td>
-				                  </tr>
-				               </c:forEach>
-			                   </tbody>
-	                		</table>
-	               		</div>
-	                </div>
-				</div>
-			</div>
-  	
-			</div>
+        
         </div>
         <!-- /.container-fluid -->
 
@@ -228,46 +151,5 @@
   <!-- End of Page Wrapper -->
 
 
-<script type="text/javascript">
-$("#checkAll").click(function () {
-	var ids = $('input:checkbox').not(this).prop('checked', this.checked).map(function(e){
-		return $(this).val();
-	}).get();;
-	$('#btnDelete').click(function(e){
-		ConfirmDetele(ids);
-	})
-});
-$('#btnDelete').click(function(e){
-    var ids = $('tbody input[type=checkbox]:checked').map(function(e){
-		return $(this).val();
-	}).get();
-	ConfirmDelete(ids);
-});
-
-function ConfirmDelete(ids){
-	var x = confirm("Are you sure you want to delete?");
-	 if (x){
-	deleteItem(ids);
-	}
-	 else {
-	window.location.href = "${courseURL}";
-	}
-}
-
-function deleteItem(data){
-	$.ajax({
-	   url : "${workAPI}",
-	   type : "DELETE",
-	   contentType: "application/json",
-	   data: JSON.stringify(data),
-	   success: function (result){
-	        window.location.href = "${workURL}";
-	   },
-	   error: function (error){
-		window.location.href = "${workURL}";
-	   },
-	});
-}
-</script>
 </body>
 </html>

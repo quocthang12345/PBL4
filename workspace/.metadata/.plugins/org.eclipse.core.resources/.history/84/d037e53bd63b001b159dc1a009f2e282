@@ -1,0 +1,27 @@
+package com.SpringMVC.model.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@Entity
+@Table(name = "activity")
+public class ActivityEntity {
+	 private String userAgent;
+	 private String ip;
+	 private String expires;
+	 private String requestMethod;
+	 private String url; 
+	 
+	 @OneToOne(fetch = FetchType.LAZY)
+	 @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_activity_user"))
+	 @JsonBackReference
+	 private UserEntity user;
+	 
+	 
+}

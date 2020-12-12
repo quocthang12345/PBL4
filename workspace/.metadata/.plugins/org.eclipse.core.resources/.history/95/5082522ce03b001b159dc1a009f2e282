@@ -1,0 +1,74 @@
+package com.SpringMVC.interceptor;
+
+import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.SpringMVC.model.convert.userConvert;
+import com.SpringMVC.model.dto.UserDTO;
+import com.SpringMVC.model.entity.ActivityEntity;
+import com.SpringMVC.model.entity.UserEntity;
+import com.SpringMVC.service.IActivityService;
+import com.SpringMVC.service.IUserService;
+import com.SpringMVC.util.SecurityUtils;
+
+@Component
+public class ActivityInterceptor extends HandlerInterceptorAdapter {
+
+    @Autowired
+    private IActivityService activityService;
+    @Autowired
+	private IUserService userService;
+    @Autowired
+    private userConvert userConverter;
+
+
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        String userAgent = request.getHeader("User-Agent");
+        if (userAgent == null) userAgent = request.getHeader("user-agent");
+        String expires = response.getHeader("Expires");
+        ActivityEntity activity = new ActivityEntity();
+        activity.setIp(this.getClientIpAddress(request));
+        activity.setExpires(expires);
+        activity.setRequestMethod(request.getMethod());
+        activity.setUrl(request.getRequestURI());
+        
+        Matcher m = Pattern.compile("\\(\\([^\\)]+\\)\\)").matcher(userAgent);
+        if (m.find()) {
+            activity.setUserAgent(m.group(1));
+        }
+
+        if (SecurityContextHolder.getContext().getAuthentication() != null &&
+                SecurityContextHolder.getContext().getAuthentication().isAuthenticated() &&
+                !(SecurityContextHolder.getContext().getAuthentication()
+                        instanceof AnonymousAuthenticationToken)) {
+    		UserDTO user = userService.findByUsername((SecurityUtils.getPrincipal().getUsername()));
+            activity.setUserActivity(userConverter.toEntity(user));
+            activityService.save(activity);
+            
+            return super.preHandle(request, response, handler);
+        } 
+        return super.preHandle(request, response, handler);
+    }
+
+    private String getClientIpAddress(HttpServletRequest request) {
+        String xForwardedForHeader = request.getHeader("X-Forwarded-For");
+        if (xForwardedForHeader == null) {
+            return request.getRemoteAddr();
+        } else {
+            return new StringTokenizer(xForwardedForHeader, ",").nextToken().trim();
+        }
+    }
+
+}

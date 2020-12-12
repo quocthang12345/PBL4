@@ -1,0 +1,82 @@
+package com.SpringMVC.model.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@Entity
+@Table(name = "activity")
+public class ActivityEntity extends BaseEntity {
+	 private String userAgent;
+	 private String ip;
+	 private String expires;
+	 private String requestMethod;
+	 private String url; 
+
+	 
+	 @ManyToOne(fetch = FetchType.LAZY)
+	 @JoinColumn(name = "user_id", nullable = false, 
+	        foreignKey = @ForeignKey(name = "fk_activity_user"))
+	 @JsonBackReference
+	    private UserEntity userActivity;
+
+	public String getUserAgent() {
+		return userAgent;
+	}
+
+	public void setUserAgent(String userAgent) {
+		this.userAgent = userAgent;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public String getExpires() {
+		return expires;
+	}
+
+	public void setExpires(String expires) {
+		this.expires = expires;
+	}
+
+	public String getRequestMethod() {
+		return requestMethod;
+	}
+
+	public void setRequestMethod(String requestMethod) {
+		this.requestMethod = requestMethod;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public UserEntity getUserActivity() {
+		return userActivity;
+	}
+
+	public void setUserActivity(UserEntity userActivity) {
+		this.userActivity = userActivity;
+	}
+
+	
+	 
+	 
+	 
+	 
+}

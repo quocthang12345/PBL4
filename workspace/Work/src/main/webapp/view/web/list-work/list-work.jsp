@@ -49,10 +49,10 @@
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 mb-2">
 	                        <div class="card course">
 	                            <div class="card-header img-lesson p-0">
-	                                <img src="<c:url value='${j.thumbnail}'/>" alt="Java" />
+	                                <img src="<c:url value='https://via.placeholder.com/150'/>" alt="Java" />
 	                            </div>
 	                            <div class="card-body short-description-lesson">
-	                                <h4><a onclick="callAPIUser(${j.id})"  href="<c:url value='/work-detail?id=${j.id}'/>" >${j.workName}</a></h4>
+	                                <h4><a href="<c:url value='/work-detail?id=${j.id}'/>" >${j.workName}</a></h4>
 	                                	<input type="hidden" name="id" id="id" value="${j.id}"/>
 	                                <p>${j.workDescription}</p>
 	                                <div class="rating d-flex flex-row align-items-center justify-content-between">
@@ -89,7 +89,7 @@
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 mb-2">
 	                        <div class="card course">
 	                            <div class="card-header img-lesson p-0">
-	                                <img src="<c:url value='${j.thumbnail}'/>" alt="Java" />
+	                                <img src="<c:url value='https://via.placeholder.com/150'/>" alt="Java" />
 	                            </div>
 	                            <div class="card-body short-description-lesson">
 	                                <h4><a href="<c:url value='/work-detail?id=${j.id}'/>">${j.workName}</a></h4>

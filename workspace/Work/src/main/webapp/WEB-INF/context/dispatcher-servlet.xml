@@ -33,6 +33,11 @@
 
 	</bean>
 	
+	<mvc:interceptors>
+        <bean class="com.SpringMVC.interceptor.ActivityInterceptor"></bean>
+    </mvc:interceptors>
+	
+	
 	<mvc:resources mapping="/template/**" location="/template/" />
 	
 </beans>
